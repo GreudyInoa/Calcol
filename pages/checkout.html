@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcol — Checkout</title>
+    <link rel="stylesheet" href="../Css/variables.css">
+    <link rel="stylesheet" href="../Css/global.css">
+    <link rel="stylesheet" href="../Css/components.css">
+    <link rel="stylesheet" href="../Css/checkout.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar">
+        <img class="logo" src="../Imagenes/General/doky-calcol-logo.png" alt="Calcol">
+        <ul class="nav-links">
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="menu.html">Menú</a></li>
+            <li><a href="promociones.html">Promociones</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="../index.html#contacto">Contacto</a></li>
+        </ul>
+        <button class="btn-nav-cta">Login</button>
+    </nav>
+
+    <!-- ========== CHECKOUT ========== -->
+    <div class="checkout-contenedor">
+
+        <!-- COLUMNA IZQUIERDA -->
+        <div class="checkout-izquierda">
+
+            <!-- DETALLES DE ENTREGA -->
+            <div class="checkout-card">
+                <h2 class="checkout-card-titulo">Detalles de la entrega</h2>
+
+                <!-- Dirección -->
+                <div class="checkout-item">
+                    <img class="checkout-icono" src="../Imagenes/Index/icono-ubi.png" alt="Dirección">
+                    <div class="checkout-item-texto">
+                        <strong>Dirección de entrega</strong>
+                        <input class="checkout-input" type="text" id="direccion" placeholder="Busca tu dirección...">
+                    </div>
+                </div>
+
+                <!-- Instrucciones -->
+                <div class="checkout-item">
+                    <img class="checkout-icono" src="../Imagenes/Carrito/instruccion-notas.png" alt="Instrucciones">
+                    <div class="checkout-item-texto">
+                        <strong>Instrucciones de entrega</strong>
+                        <input class="checkout-input" type="text" id="instrucciones" placeholder="Ej: Tocar el timbre...">
+                    </div>
+                </div>
+            </div>
+
+            <!-- MÉTODO DE PAGO -->
+            <div class="checkout-card">
+                <h2 class="checkout-card-titulo">Pago</h2>
+
+                <div class="checkout-item">
+                    <img class="checkout-icono" id="metodo-pago-icono" src="../Imagenes/Carrito/dinero.png" alt="Efectivo">
+                    <div class="checkout-item-texto">
+                        <strong id="metodo-pago-texto">Efectivo</strong>
+                    </div>
+                    <button class="checkout-btn-editar" id="btn-editar-pago">Editar</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- COLUMNA DERECHA -->
+        <div class="checkout-derecha">
+
+            <!-- RESUMEN DEL CARRITO -->
+            <div class="checkout-card">
+                <div class="resumen-header" id="resumen-header">
+                    <div class="resumen-header-izq">
+                        <img class="checkout-icono" src="../Imagenes/Carrito/carrito-de-compras.png" alt="Carrito">
+                        <span id="resumen-titulo">Resumen del carrito (0 artículos)</span>
+                    </div>
+                    <span class="resumen-flecha" id="resumen-flecha">▼</span>
+                </div>
+
+                <!-- Productos — oculto por defecto -->
+                <div class="resumen-productos" id="resumen-productos">
+                    <!-- Se llena con JS -->
+                </div>
+            </div>
+
+            <!-- TOTAL DEL PEDIDO -->
+            <div class="checkout-card">
+                <h2 class="checkout-card-titulo">Total del pedido</h2>
+
+                <div class="checkout-total-fila">
+                    <span>Subtotal</span>
+                    <span id="checkout-subtotal">$0</span>
+                </div>
+
+                <div class="checkout-total-fila">
+                    <span>Costo de envío</span>
+                    <span>$2.000</span>
+                </div>
+
+                <div class="checkout-total-fila checkout-total-final">
+                    <span>Total</span>
+                    <span id="checkout-total">$0</span>
+                </div>
+
+                <!-- BOTÓN HACER PEDIDO -->
+                <button class="btn-hacer-pedido" id="btn-hacer-pedido">
+                    Hacer el pedido
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ========== MODAL MÉTODO DE PAGO ========== -->
+    <div class="modal-overlay" id="modal-overlay"></div>
+
+    <div class="modal-pago" id="modal-pago">
+        <button class="modal-cerrar" id="modal-cerrar">✕</button>
+        <h2 class="modal-titulo">Opciones de pago</h2>
+        <p class="modal-subtitulo">Método de pago</p>
+
+        <label class="modal-opcion">
+            <img class="modal-icono" src="../Imagenes/Carrito/dinero.png" alt="Efectivo">
+            <span>Efectivo</span>
+            <input type="radio" name="pago" value="efectivo" checked>
+        </label>
+
+        <label class="modal-opcion" id="agregar-pago">
+            <span>+ Agregar método de pago</span>
+        </label>
+
+        <button class="modal-guardar" id="modal-guardar">Guardar</button>
+    </div>
+
+      <!-- ========== MODAL AGREGAR PAGO ========== -->
+    <div class="modal-pago" id="modal-agregar-pago">
+        <button class="modal-cerrar" id="modal-cerrar-agregar">✕</button>
+        <h2 class="modal-titulo">Agrega una tarjeta</h2>
+
+        <!-- Preview de la tarjeta -->
+        <div class="tarjeta-preview" id="tarjeta-preview">
+
+            <!-- Logo arriba a la derecha -->
+            <div class="tarjeta-preview-top">
+                <img class="tarjeta-logo" id="tarjeta-logo" src="../Imagenes/Carrito/icono-visa.png" alt="Tarjeta">
+            </div>
+
+            <!-- Chip y número en la misma fila -->
+            <div class="tarjeta-preview-medio">
+                <img class="tarjeta-chip" src="../Imagenes/Carrito/chip-tarjeta.png" alt="Chip">
+                <span class="tarjeta-numero-preview" id="tarjeta-numero-preview">**** **** **** ****</span>
+            </div>
+
+            <!-- Nombre y fecha abajo -->
+            <div class="tarjeta-preview-bottom">
+                <span class="tarjeta-nombre-preview" id="tarjeta-nombre-preview">NOMBRE EN LA TARJETA</span>
+                <span class="tarjeta-fecha-preview" id="tarjeta-fecha-preview">MM/AA</span>
+            </div>
+
+        </div>
+
+        <!-- Formulario -->
+        <div class="tarjeta-form">
+
+            <div class="tarjeta-input-grupo">
+                <label>Número de tarjeta</label>
+                <input class="checkout-input" type="text" id="tarjeta-numero" 
+                    placeholder="1234 5678 9012 3456" maxlength="19">
+            </div>
+
+            <div class="tarjeta-input-grupo">
+                <label>Nombre en la tarjeta</label>
+                <input class="checkout-input" type="text" id="tarjeta-nombre" 
+                    placeholder="JUAN PÉREZ">
+            </div>
+
+            <div class="tarjeta-input-fila">
+                <div class="tarjeta-input-grupo">
+                    <label>Fecha de vencimiento</label>
+                    <input class="checkout-input" type="text" id="tarjeta-fecha" 
+                        placeholder="MM/AA" maxlength="5">
+                </div>
+                <div class="tarjeta-input-grupo">
+                    <label>CVV</label>
+                    <input class="checkout-input" type="text" id="tarjeta-cvv" 
+                        placeholder="123" maxlength="3">
+                </div>
+            </div>
+
+        </div>
+
+        <button class="modal-guardar" id="modal-guardar-tarjeta">Guardar tarjeta</button>
+    </div>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <p>© 2026 Calcol — El verdadero sabor Dominicano</p>
+    </footer>
+
+    <script src="../Js/checkout.js"></script>
+</body>
+</html>

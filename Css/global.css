@@ -1,0 +1,10 @@
+/* ================================
+   GLOBAL
+   ================================ */
+
+/* Estilos que se comparten en todas las páginas */
+
+/* Clase de texto resaltado en rojo */
+.resaltar {
+  color: var(--rojo);
+}

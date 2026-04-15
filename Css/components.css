@@ -1,0 +1,57 @@
+/* ================================
+   NAVBAR
+   ================================ */
+
+.navbar {
+  background-color: var(--blanco);
+  height: 60px;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 60px;
+  width: auto;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--negro);
+}
+
+.nav-links a:hover {
+  color: var(--rojo);
+}
+
+.btn-nav-cta {
+  background-color: var(--negro);
+  color: var(--blanco);
+  border: none;
+  padding: 9px 20px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* ================================
+   FOOTER
+   ================================ */
+
+.footer {
+  background-color: var(--negro-transparente);
+  text-align: center;
+  padding: 20px;
+  font-size: 13px;
+  color: var(--blanco);
+}

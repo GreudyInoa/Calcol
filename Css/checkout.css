@@ -1,0 +1,486 @@
+/* ================================
+   CHECKOUT
+   ================================ */
+
+/* Contenedor principal — dos columnas */
+.checkout-contenedor {
+  display: flex;
+  gap: 24px;
+  padding: 40px 80px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Columna izquierda */
+.checkout-izquierda {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+}
+
+/* Columna derecha */
+.checkout-derecha {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 380px;
+}
+
+/* Tarjeta blanca */
+.checkout-card {
+  background-color: var(--blanco);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: var(--sombra-fuerte);
+}
+
+/* Título de cada tarjeta */
+.checkout-card-titulo {
+  font-family: var(--fuente-titulo);
+  font-size: 22px;
+  color: var(--negro);
+  margin-bottom: 20px;
+}
+
+/* Cada fila de icono + texto + botón */
+.checkout-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--gris-borde);
+}
+
+/* Último item sin borde */
+.checkout-item:last-child {
+  border-bottom: none;
+}
+
+/* Icono de cada item */
+.checkout-icono {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+/* Texto de cada item */
+.checkout-item-texto {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Título del item */
+.checkout-item-texto strong {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--negro);
+}
+
+/* Input de dirección e instrucciones */
+.checkout-input {
+  border: 1px solid var(--gris-borde);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-family: var(--fuente-cuerpo);
+  font-size: 13px;
+  color: var(--negro);
+  outline: none;
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Input al hacer clic */
+.checkout-input:focus {
+  border-color: var(--rojo);
+}
+
+/* Botón editar */
+.checkout-btn-editar {
+  background: none;
+  border: 1px solid var(--gris-borde);
+  border-radius: 30px;
+  padding: 6px 16px;
+  font-family: var(--fuente-cuerpo);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--negro);
+}
+
+/* Botón editar al pasar mouse */
+.checkout-btn-editar:hover {
+  background-color: var(--gris-input);
+}
+
+/* ================================
+   RESUMEN DEL CARRITO
+   ================================ */
+
+/* Header del resumen — clickeable */
+.resumen-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+/* Lado izquierdo del header */
+.resumen-header-izq {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--negro);
+}
+
+/* Flecha expandir */
+.resumen-flecha {
+  font-size: 14px;
+  color: var(--gris);
+  transition: transform 0.3s ease;
+}
+
+/* Flecha cuando está abierto */
+.resumen-flecha.abierto {
+  transform: rotate(180deg);
+}
+
+/* Lista de productos — oculto por defecto */
+.resumen-productos {
+  display: none;
+  margin-top: 16px;
+}
+
+/* Lista visible */
+.resumen-productos.abierto {
+  display: block;
+}
+
+/* Cada producto en el resumen */
+.resumen-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-top: 1px solid var(--gris-borde);
+}
+
+/* Imagen del producto en resumen */
+.resumen-item-imagen {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+/* Info del producto en resumen */
+.resumen-item-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* Nombre del producto en resumen */
+.resumen-item-nombre {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--negro);
+}
+
+/* Precio del producto en resumen */
+.resumen-item-precio {
+  font-size: 13px;
+  color: var(--gris);
+}
+
+/* Cantidad del producto en resumen */
+.resumen-item-cantidad {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--negro);
+  background-color: var(--gris-input);
+  border-radius: 8px;
+  padding: 4px 10px;
+}
+
+/* ================================
+   TOTAL DEL PEDIDO
+   ================================ */
+
+/* Cada fila del total */
+.checkout-total-fila {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  font-size: 14px;
+  color: var(--gris);
+  border-bottom: 1px solid var(--gris-borde);
+}
+
+/* Fila del total final */
+.checkout-total-final {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--negro);
+  border-bottom: none;
+}
+
+/* Precio total en rojo */
+.checkout-total-final span:last-child {
+  color: var(--rojo);
+  font-size: 20px;
+}
+
+/* Botón hacer pedido */
+.btn-hacer-pedido {
+  display: block;
+  width: 100%;
+  background-color: var(--negro);
+  color: var(--blanco);
+  border: none;
+  padding: 16px;
+  border-radius: 30px;
+  font-family: var(--fuente-cuerpo);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 16px;
+}
+
+/* Botón hacer pedido al pasar mouse */
+.btn-hacer-pedido:hover {
+  background-color: var(--rojo);
+}
+
+/* ================================
+   MODAL PAGO
+   ================================ */
+
+/* Overlay del modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 98;
+}
+
+/* Modal visible */
+.modal-overlay.abierto {
+  display: block;
+}
+
+/* Caja del modal */
+.modal-pago {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--blanco);
+  border-radius: 16px;
+  padding: 32px;
+  width: 460px;
+  z-index: 99;
+  display: none;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: var(--sombra-fuerte);
+}
+
+/* Modal visible */
+.modal-pago.abierto {
+  display: flex;
+}
+
+/* Botón cerrar modal */
+.modal-cerrar {
+  background: none;
+  border: 1px solid var(--gris-borde);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+}
+
+/* Botón cerrar al pasar mouse */
+.modal-cerrar:hover {
+  background-color: var(--gris-input);
+  color: var(--rojo);
+}
+
+/* Título del modal */
+.modal-titulo {
+  font-family: var(--fuente-titulo);
+  font-size: 28px;
+  color: var(--negro);
+}
+
+/* Subtítulo del modal */
+.modal-subtitulo {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gris);
+}
+
+/* Cada opción del modal */
+.modal-opcion {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--gris-borde);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--negro);
+  gap: 12px;
+}
+
+/* Icono del modal */
+.modal-icono {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* Botón guardar del modal */
+.modal-guardar {
+  background-color: var(--negro);
+  color: var(--blanco);
+  border: none;
+  padding: 14px;
+  border-radius: 30px;
+  font-family: var(--fuente-cuerpo);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+/* Botón guardar al pasar mouse */
+.modal-guardar:hover {
+  background-color: var(--rojo);
+}
+
+/* ================================
+   TARJETA PREVIEW
+   ================================ */
+
+/* Preview de la tarjeta */
+.tarjeta-preview {
+  background: linear-gradient(135deg, var(--negro), #333);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: var(--blanco);
+  position: relative;
+  min-height: 120px;
+}
+
+/* Logo de la tarjeta */
+.tarjeta-logo {
+  width: 60px;
+  height: 40px;
+  object-fit: contain;
+  align-self: flex-end;
+}
+
+/* Número de la tarjeta */
+.tarjeta-numero-preview {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 4px;
+}
+
+/* Nombre en la tarjeta */
+.tarjeta-nombre-preview {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--gris-claro);
+}
+
+/* Fecha de vencimiento */
+.tarjeta-fecha-preview {
+  font-size: 12px;
+  color: var(--gris-claro);
+}
+
+/* Formulario de la tarjeta */
+.tarjeta-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Grupo de input */
+.tarjeta-input-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Label del input */
+.tarjeta-input-grupo label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gris);
+}
+
+/* Fila de dos inputs */
+.tarjeta-input-fila {
+  display: flex;
+  gap: 12px;
+}
+
+/* Logo arriba a la derecha */
+.tarjeta-preview-top {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Chip y número en fila */
+.tarjeta-preview-medio {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Chip */
+.tarjeta-chip {
+  width: 40px;
+  height: 30px;
+  object-fit: contain;
+}
+
+/* Nombre y fecha abajo */
+.tarjeta-preview-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.modal-opcion button img {
+  width: 18px;
+  height: 18px;
+}
+
+/* Radio button a la derecha */
+.modal-opcion input[type="radio"] {
+  margin-left: auto;
+}

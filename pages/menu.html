@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcol-menu</title>
+    <link rel="stylesheet" href="../Css/variables.css">
+    <link rel="stylesheet" href="../Css/global.css">
+    <link rel="stylesheet" href="../Css/components.css">
+    <link rel="stylesheet" href="../Css/menu.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- ========== EL NAVEGADOR ========== -->
+    <nav class="navbar">
+        <img class="logo" src="../Imagenes/General/doky-calcol-logo.png" alt="Calcol">
+        <ul class="nav-links">
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="menu.html">Menú</a></li>
+            <li><a href="promociones.html">Promociones</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="../index.html#contacto">Contacto</a></li>
+        </ul>
+        <button class="btn-nav-cta">Login</button>
+    </nav>
+
+    <!-- ========== TÍTULO DEL MENÚ ========== -->
+    <div class="menu-header">
+        <h1 class="menu-titulo">NUESTRO <span class="resaltar">MENÚ</span></h1>
+        <p class="menu-subtitulo">Lo mejor de la calle, preparado con nivel.</p>
+    </div>
+
+    <!-- ========== FILTROS DE CATEGORÍAS ========== -->
+    <div class="filtros">
+        <button class="filtro-btn activo" data-filtro="completos">Completos</button>
+        <button class="filtro-btn" data-filtro="hamburguesa">Hamburguesa</button>
+        <button class="filtro-btn" data-filtro="churrasco">Churrasco</button>
+        <button class="filtro-btn" data-filtro="yaroa">Yaroa</button>
+    </div>
+
+    <!-- ========== PRODUCTOS ========== -->
+    <div class="productos-grid">
+
+        <!-- COMPLETOS -->
+        <div class="tarjeta-producto" data-categoria="completos">
+            <div class="producto-info">
+                <h3 class="producto-nombre">Completo</h3>
+                <p class="producto-descripcion">Pan bueno, salchichón, tomate, palta y torta mayo casera.</p>
+                <span class="producto-precio">$1.700</span>
+                <div class="producto-extra">
+                    <div class="producto-acciones">
+                        <div class="cantidad">
+                            <button class="btn-cantidad btn-menos">-</button>
+                            <span class="numero-cantidad">1</span>
+                            <button class="btn-cantidad btn-mas">+</button>
+                        </div>
+                        <button class="btn-listo">✓ Listo</button>
+                    </div>
+                    <div class="producto-nota">
+                        <label for="nota-completo">Sin:</label>
+                        <input type="text" id="nota-completo" placeholder="Ej: sin tomate...">
+                    </div>
+                </div>
+                <button class="btn-agregar">+ Agregar</button>
+            </div>
+            <img class="imagen-producto" src="../Imagenes/Menu/Completos/completo-pequeño.png" alt="Completo">
+        </div>
+
+        <!-- Completo XL -->
+        <div class="tarjeta-producto" data-categoria="completos">
+            <div class="producto-info">
+                <h3 class="producto-nombre">Completo XL</h3>
+                <p class="producto-descripcion">Pan bueno, salchichón, palta-Chimichurri y torta mayo casera.</p>
+                <span class="producto-precio">$1.700</span>
+                <div class="producto-extra">
+                    <div class="producto-acciones">
+                        <div class="cantidad">
+                            <button class="btn-cantidad btn-menos">-</button>
+                            <span class="numero-cantidad">1</span>
+                            <button class="btn-cantidad btn-mas">+</button>
+                        </div>
+                        <button class="btn-listo">✓ Listo</button>
+                    </div>
+                    <div class="producto-nota">
+                        <label for="nota-completo-xl">Sin:</label>
+                        <input type="text" id="nota-completo-xl" placeholder="Ej: sin tomate...">
+                    </div>
+                </div>
+                <button class="btn-agregar">+ Agregar</button>
+            </div>
+            <img class="imagen-producto" src="../Imagenes/Menu/Completos/completo-pequeño.png" alt="Completo XL">
+        </div>
+
+        <!-- Italiano -->
+        <div class="tarjeta-producto" data-categoria="completos">
+            <div class="producto-info">
+                <h3 class="producto-nombre">Italiano</h3>
+                <p class="producto-descripcion">Pan suave, salchicha, tomate fresco, palta y harta mayo casera.</p>
+                <span class="producto-precio">$1.700</span>
+                <div class="producto-extra">
+                    <div class="producto-acciones">
+                        <div class="cantidad">
+                            <button class="btn-cantidad btn-menos">-</button>
+                            <span class="numero-cantidad">1</span>
+                            <button class="btn-cantidad btn-mas">+</button>
+                        </div>
+                        <button class="btn-listo">✓ Listo</button>
+                    </div>
+                    <div class="producto-nota">
+                        <label for="nota-italiano">Sin:</label>
+                        <input type="text" id="nota-italiano" placeholder="Ej: sin tomate...">
+                    </div>
+                </div>
+                <button class="btn-agregar">+ Agregar</button>
+            </div>
+            <img class="imagen-producto" src="../Imagenes/Menu/Completos/completo-italino-pequeño.png" alt="Italiano">
+        </div>
+
+        <!-- Italiano XL -->
+        <div class="tarjeta-producto" data-categoria="completos">
+            <div class="producto-info">
+                <h3 class="producto-nombre">Italiano XL</h3>
+                <p class="producto-descripcion">Pan suave, salchicha, tomate fresco, palta y harta mayo casera.</p>
+                <span class="producto-precio">$1.700</span>
+                <div class="producto-extra">
+                    <div class="producto-acciones">
+                        <div class="cantidad">
+                            <button class="btn-cantidad btn-menos">-</button>
+                            <span class="numero-cantidad">1</span>
+                            <button class="btn-cantidad btn-mas">+</button>
+                        </div>
+                        <button class="btn-listo">✓ Listo</button>
+                    </div>
+                    <div class="producto-nota">
+                        <label for="nota-italiano-xl">Sin:</label>
+                        <input type="text" id="nota-italiano-xl" placeholder="Ej: sin tomate...">
+                    </div>
+                </div>
+                <button class="btn-agregar">+ Agregar</button>
+            </div>
+            <img class="imagen-producto" src="../Imagenes/Menu/Completos/completo-italino-pequeño.png" alt="Italiano XL">
+        </div>
+
+        <!-- As Queso -->
+        <div class="tarjeta-producto" data-categoria="completos">
+            <div class="producto-info">
+                <h3 class="producto-nombre">As Queso</h3>
+                <p class="producto-descripcion">Pan, vienesa, salchicha y queso derretido</p>
+                <span class="producto-precio">$1.700</span>
+                <div class="producto-extra">
+                    <div class="producto-acciones">
+                        <div class="cantidad">
+                            <button class="btn-cantidad btn-menos">-</button>
+                            <span class="numero-cantidad">1</span>
+                            <button class="btn-cantidad btn-mas">+</button>
+                        </div>
+                        <button class="btn-listo">✓ Listo</button>
+                    </div>
+                    <div class="producto-nota">
+                        <label for="nota-as-queso">Sin:</label>
+                        <input type="text" id="nota-as-queso" placeholder="Ej: sin tomate...">
+                    </div>
+                </div>
+                <button class="btn-agregar">+ Agregar</button>
+            </div>
+            <img class="imagen-producto" src="../Imagenes/Menu/Completos/completo-As-pequeño.png" alt="As Queso">
+        </div>
+
+        <!-- As Queso XL -->
+        <div class="tarjeta-producto" data-categoria="completos">
+            <div class="producto-info">
+                <h3 class="producto-nombre">As Queso XL</h3>
+                <p class="producto-descripcion">Pan, vienesa, salchicha y queso derretido</p>
+                <span class="producto-precio">$1.700</span>
+                <div class="producto-extra">
+                    <div class="producto-acciones">
+                        <div class="cantidad">
+                            <button class="btn-cantidad btn-menos">-</button>
+                            <span class="numero-cantidad">1</span>
+                            <button class="btn-cantidad btn-mas">+</button>
+                        </div>
+                        <button class="btn-listo">✓ Listo</button>
+                    </div>
+                    <div class="producto-nota">
+                        <label for="nota-as-queso-xl">Sin:</label>
+                        <input type="text" id="nota-as-queso-xl" placeholder="Ej: sin tomate...">
+                    </div>
+                </div>
+                <button class="btn-agregar">+ Agregar</button>
+            </div>
+            <img class="imagen-producto" src="../Imagenes/Menu/Completos/completo-As-pequeño.png" alt="As Queso XL">
+        </div>
+
+        <!-- CHURRASCO -->
+        <div class="tarjeta-producto" data-categoria="churrasco">
+            <div class="producto-info">
+                <h3 class="producto-nombre">Churrasco</h3>
+                <p class="producto-descripcion">Pan, carne jugosa, tomate, palta y mayo casera.</p>
+                <span class="producto-precio">$2.500</span>
+                <div class="producto-extra">
+                    <div class="producto-acciones">
+                        <div class="cantidad">
+                            <button class="btn-cantidad btn-menos">-</button>
+                            <span class="numero-cantidad">1</span>
+                            <button class="btn-cantidad btn-mas">+</button>
+                        </div>
+                        <button class="btn-listo">✓ Listo</button>
+                    </div>
+                    <div class="producto-nota">
+                        <label for="nota-churrasco">Sin:</label>
+                        <input type="text" id="nota-churrasco" placeholder="Ej: sin tomate...">
+                    </div>
+                </div>
+                <button class="btn-agregar">+ Agregar</button>
+            </div>
+            <img class="imagen-producto" src="../Imagenes/Menu/churrasco/churrasco-italiano.webp" alt="Churrasco">
+        </div>
+
+    </div>
+
+    <!-- ========== PANEL DEL CARRITO ========== -->
+    <div class="carrito-overlay" id="carrito-overlay"></div>
+
+    <div class="panel-carrito" id="panel-carrito">
+        <div class="carrito-header">
+            <div class="carrito-titulo-wrap">
+                <img class="carrito-icono" src="../Imagenes/Carrito/carrito-de-compras.png" alt="Carrito">
+                <h2 class="carrito-titulo">Tu pedido</h2>
+            </div>
+            <button class="carrito-cerrar" id="carrito-cerrar">✕</button>
+        </div>
+
+        <div class="carrito-items" id="carrito-items">
+            <p class="carrito-vacio">Tu carrito está vacío</p>
+        </div>
+
+        <div class="carrito-cubiertos">
+            <label for="pedir-cubiertos">
+                <img class="cubiertos-icono" src="../Imagenes/Carrito/cruz-tenedor.png" alt="Cubiertos">
+                Pedir cubiertos y tenedor
+            </label>
+            <input type="checkbox" id="pedir-cubiertos">
+        </div>
+
+        <div class="carrito-cubiertos">
+            <label for="pedir-salsa">
+               <img class="salsa-icono" src="../Imagenes/Carrito/salsa-de-casa.png" alt="Salsa">
+               Salsa de la casa
+            </label>
+            <input type="checkbox" id="pedir-salsa">
+         </div>
+
+        <div class="carrito-subtotal">
+            <span>Subtotal:</span>
+            <span id="carrito-total">$0</span>
+        </div>
+
+        <a class="btn-finalizar" href="checkout.html">
+            Finalizar pedido
+            <img class="icono-flecha" src="../Imagenes/Carrito/flecha.png" alt="flecha">
+        </a>
+    </div>
+
+    <!-- Botón flotante del carrito -->
+    <button class="btn-carrito-flotante" id="btn-carrito-flotante">
+        <img class="icono-carrito-flotante" src="../Imagenes/Carrito/carrito-de-compras.png" alt="Carrito">
+        <span id="carrito-contador">0</span>
+    </button>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <p>© 2026 Calcol — El verdadero sabor Dominicano</p>
+    </footer>
+
+    <script src="../Js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+/* ================================
+   CONFIRMACIÓN DE PEDIDO
+   ================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: 
+        radial-gradient(circle at top left, rgb(249, 210, 54) 20%, transparent 60%),
+        radial-gradient(circle at bottom right, rgb(255, 180, 80) 20%, transparent 80%),
+        radial-gradient(circle at center, rgb(230, 120, 10) 10%, transparent 70%),
+        rgb(213, 96, 0);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeOut 0.5s ease 3.0s forwards;
+}
+
+/* Fade out antes de redirigir */
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+/* Imagen de confirmación */
+.confirmacion-imagen {
+    width: 600px;
+    max-width: 90vw;
+    animation: bounceIn 0.6s ease;
+}
+
+/* Animación de entrada */
+@keyframes bounceIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    70% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); }
+}
