@@ -314,6 +314,7 @@ btnHacerPedido.addEventListener('click', async function() {
     const instrucciones = document.getElementById('instrucciones')?.value || '';
     const cubiertos = document.getElementById('pedir-cubiertos')?.checked ? 1 : 0;
     const salsa = document.getElementById('pedir-salsa')?.checked ? 1 : 0;
+    
 
     let subtotal = 0;
     const items = carrito.map(p => {
@@ -355,6 +356,6 @@ btnHacerPedido.addEventListener('click', async function() {
         window.location.href = '../confirmacion.html';
 
     } catch (e) {
-        alert('Error de conexión con el servidor.');
+    alert('Error de conexión con el servidor.');
     }
 });
