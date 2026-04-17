@@ -163,8 +163,11 @@ botonesListos.forEach(boton => {
         /* Obtiene la nota */
         const nota = tarjeta.querySelector('.producto-nota input').value;
 
+        /* Obtiene el id del producto */
+        const id = parseInt(tarjeta.dataset.id);
+
         /* Agrega el producto al carrito */
-        carrito.push({ nombre, precio, imagen, cantidad, nota });
+        carrito.push({ id, nombre, precio, imagen, cantidad, nota });
 
         /* Solo actualiza el contador — sin abrir el carrito */
         actualizarCarrito();

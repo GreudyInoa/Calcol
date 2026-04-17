@@ -51,15 +51,27 @@ document.getElementById('btn-cancelar').addEventListener('click', () => {
   modalOverlay.classList.remove('visible');
 });
 
-document.getElementById('btn-confirmar-eliminar').addEventListener('click', () => {
-  const usuarios = JSON.parse(localStorage.getItem('calcol_usuarios') || '[]');
-  const nuevos   = usuarios.filter(u => u.email !== sesion.email);
-  localStorage.setItem('calcol_usuarios', JSON.stringify(nuevos));
+document.getElementById('btn-confirmar-eliminar').addEventListener('click', async () => {
+  try {
+    const res  = await fetch('/Calcol/api/eliminar_usuario.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: sesion.email })
+    });
+    const data = await res.json();
 
-  sessionStorage.removeItem('calcol_sesion');
-  localStorage.removeItem('calcol_sesion');
+    if (data.error) {
+      alert(data.error);
+      return;
+    }
 
-  window.location.href = 'index.html';
+    sessionStorage.removeItem('calcol_sesion');
+    localStorage.removeItem('calcol_sesion');
+    window.location.href = 'index.html';
+
+  } catch (e) {
+    alert('Error de conexión con el servidor.');
+  }
 });
 
 // Cerrar modal al hacer clic fuera

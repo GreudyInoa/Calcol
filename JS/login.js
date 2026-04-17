@@ -1,19 +1,3 @@
-/* ── USUARIOS (simulado, reemplazar por API PHP) ── */
-function getUsuarios() {
-  const guardados = localStorage.getItem('calcol_usuarios');
-  if (guardados) return JSON.parse(guardados);
-
-  const base = [
-    { nombre: 'Admin',   email: 'admin@calcol.cl',   password: 'admin123',   rol: 'admin',   telefono: '+56912345678' },
-    { nombre: 'Cliente', email: 'cliente@calcol.cl', password: 'cliente123', rol: 'cliente', telefono: '+56987654321' },
-  ];
-  saveUsuarios(base);
-  return base;
-}
-
-function saveUsuarios(arr) {
-  localStorage.setItem('calcol_usuarios', JSON.stringify(arr));
-}
 
 /* ── ELEMENTOS ── */
 const tabBtns    = document.querySelectorAll('.tab-btn');
@@ -141,8 +125,8 @@ function exitoso(btn, nombre, destino) {
   setTimeout(() => { window.location.href = 'bienvenido.html'; }, 1300);
 }
 
-/* ── LOGIN ── */
-function handleLogin() {
+/* ── LOGIN con PHP ── */
+async function handleLogin() {
   limpiarTodo();
   const email = lEmail.value.trim();
   const pass  = lPass.value.trim();
@@ -152,31 +136,34 @@ function handleLogin() {
   if (!pass)                   { marcarError(lPass,  'l-pass-err');  ok = false; }
   if (!ok) return;
 
-  const usuario = getUsuarios().find(u => u.email === email && u.password === pass);
+  try {
+    const res  = await fetch('/Calcol/api/login.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password: pass })
+    });
+    const data = await res.json();
 
-  if (!usuario) {
-    mostrarAlerta(aLogin, aLoginT, 'Usuario o contraseña incorrectos.');
-    lEmail.classList.add('error');
-    lPass.classList.add('error');
-    return;
+    if (data.error) {
+      mostrarAlerta(aLogin, aLoginT, data.error);
+      lEmail.classList.add('error');
+      lPass.classList.add('error');
+      return;
+    }
+
+    sessionStorage.setItem('calcol_sesion', JSON.stringify(data.usuario));
+    exitoso(btnLogin, data.usuario.nombre, 'bienvenido.html');
+
+  } catch (e) {
+    mostrarAlerta(aLogin, aLoginT, 'Error de conexión con el servidor.');
   }
-
-  sessionStorage.setItem('calcol_sesion', JSON.stringify({
-    nombre:   usuario.nombre,
-    email:    usuario.email,
-    rol:      usuario.rol,
-    telefono: usuario.telefono || '',
-  }));
-
-  const destino = usuario.rol === 'admin' ? '../index.html' : '../index.html';
-  exitoso(btnLogin, usuario.nombre, destino);
 }
 
 btnLogin.addEventListener('click', handleLogin);
 lPass.addEventListener('keydown', e => { if (e.key === 'Enter') handleLogin(); });
 
-/* ── REGISTRO ── */
-function handleRegistro() {
+/* ── REGISTRO con PHP ── */
+async function handleRegistro() {
   limpiarTodo();
   const nombre = rNombre.value.trim();
   const tel    = rTel.value.trim();
@@ -192,27 +179,26 @@ function handleRegistro() {
   if (pass !== pass2)          { marcarError(rPass2,  'r-pass2-err');  ok = false; }
   if (!ok) return;
 
-  const usuarios = getUsuarios();
+  try {
+    const res  = await fetch('/Calcol/api/registro.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ nombre, email, password: pass, telefono: '+56' + tel })
+    });
+    const data = await res.json();
 
-  if (usuarios.find(u => u.email === email)) {
-    mostrarAlerta(aReg, aRegT, 'Este correo ya está registrado.');
-    rEmail.classList.add('error');
-    return;
+    if (data.error) {
+      mostrarAlerta(aReg, aRegT, data.error);
+      if (data.error.includes('correo')) rEmail.classList.add('error');
+      return;
+    }
+
+    sessionStorage.setItem('calcol_sesion', JSON.stringify(data.usuario));
+    exitoso(btnReg, data.usuario.nombre, 'bienvenido.html');
+
+  } catch (e) {
+    mostrarAlerta(aReg, aRegT, 'Error de conexión con el servidor.');
   }
-
-  const telefonoCompleto = '+56' + tel;
-
-  usuarios.push({ nombre, email, password: pass, rol: 'cliente', telefono: telefonoCompleto });
-  saveUsuarios(usuarios);
-
-  sessionStorage.setItem('calcol_sesion', JSON.stringify({
-    nombre,
-    email,
-    rol: 'cliente',
-    telefono: telefonoCompleto,
-  }));
-
-  exitoso(btnReg, nombre, '../index.html');
 }
 
 btnReg.addEventListener('click', handleRegistro);

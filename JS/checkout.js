@@ -291,24 +291,70 @@ btnGuardarTarjeta.addEventListener('click', function() {
 
 const btnHacerPedido = document.getElementById('btn-hacer-pedido');
 
-btnHacerPedido.addEventListener('click', function() {
 
-    /* Valida que haya dirección */
-    const direccion = document.getElementById('direccion').value;
-    if (direccion === '') {
-        alert('Por favor ingresa tu dirección de entrega');
+btnHacerPedido.addEventListener('click', async function() {
+     // Verificar si hay sesión activa
+    const sesion = JSON.parse(sessionStorage.getItem('calcol_sesion')) || null;
+    if (!sesion) {
+        alert('Debes iniciar sesión para hacer un pedido');
+        window.location.href = '/Calcol/login.html';
         return;
     }
 
-    /* Valida que haya productos */
+    const direccion = document.getElementById('direccion').value;
+    if (!direccion) {
+        alert('Por favor ingresa tu dirección de entrega');
+        return;
+    }
     if (carrito.length === 0) {
         alert('Tu carrito está vacío');
         return;
     }
 
-    /* Confirma el pedido */
-    localStorage.removeItem('carrito');
-    window.location.href = '../confirmacion.html';
+    const instrucciones = document.getElementById('instrucciones')?.value || '';
+    const cubiertos = document.getElementById('pedir-cubiertos')?.checked ? 1 : 0;
+    const salsa = document.getElementById('pedir-salsa')?.checked ? 1 : 0;
 
+    let subtotal = 0;
+    const items = carrito.map(p => {
+        const precio = parseInt(p.precio.replace(/\D/g, ''));
+        subtotal += precio * p.cantidad;
+        return {
+            producto_id: p.id || null,
+            cantidad:    p.cantidad,
+            precio:      precio,
+            nota:        p.nota || ''
+        };
+    });
+
+    
+    try {
+        const res  = await fetch('/Calcol/api/pedido.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                usuario_id:    sesion ? sesion.id : null,
+                direccion,
+                instrucciones,
+                subtotal,
+                envio:         2000,
+                total:         subtotal + 2000,
+                cubiertos,
+                salsa,
+                items
+            })
+        });
+        const data = await res.json();
+
+        if (data.error) {
+            alert('Error: ' + data.error);
+            return;
+        }
+
+        localStorage.removeItem('carrito');
+        window.location.href = '../confirmacion.html';
+
+    } catch (e) {
+        alert('Error de conexión con el servidor.');
+    }
 });
-
