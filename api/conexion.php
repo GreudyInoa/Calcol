@@ -3,7 +3,7 @@
 $host     = 'localhost';
 $db       = 'calcol';
 $user     = 'root';
-$password = 'Greudy0221';
+$password = '';
 $charset  = 'utf8mb4';
 
 try {

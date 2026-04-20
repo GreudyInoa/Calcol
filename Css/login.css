@@ -361,18 +361,17 @@ body {
   flex: 1;
 }
 
-/* ── Responsive ── */
+.col-imagen {
+    display: none;
+}
+
+.col-form {
+    padding: 28px 24px;
+}
+
 @media (max-width: 640px) {
-  .login-card {
+.login-card {
     grid-template-columns: 1fr;
     max-width: 420px;
-  }
-
-  .col-imagen {
-    display: none;
-  }
-
-  .col-form {
-    padding: 28px 24px;
-  }
+ }
 }
